@@ -5,6 +5,9 @@ import cookieParser from "cookie-parser";
 
 import authRoutes from "./routes/auth.route.js";
 import userRoutes from "./routes/user.route.js";
+import friendRoutes from "./routes/friend.route.js"
+
+
 dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 8000;
@@ -15,6 +18,7 @@ app.use(cookieParser());
 
 app.use("/api/auth", authRoutes);
 app.use("/api/user", userRoutes);
+app.use("/api/friend", friendRoutes);
 
 app.listen(PORT, () => {
     connectMongoDB();

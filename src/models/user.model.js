@@ -26,6 +26,20 @@ const userSchema = new mongoose.Schema({
             default: []
         }
     ],
+    friendRequest: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "User",
+            default: []
+        }
+    ],
+    pendingFriendRequest: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "User",
+            default: []
+        }
+    ],
     profileImg: {
         type: String,
         default: ""
