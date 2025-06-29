@@ -1,0 +1,37 @@
+# Node modules
+node_modules/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# dotenv environment variables
+.env
+
+# Build / Output
+dist/
+build/
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# IDE/editor config
+.vscode/
+.idea/
+
+# TypeScript
+*.tsbuildinfo
+
+# Debugging files
+*.tgz
+
+# Optional npm cache directory
+.npm/
+
+# Local test results
+coverage/
+
+# Mac system files
+*.DS_Store
