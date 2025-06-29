@@ -125,8 +125,6 @@ export const acceptRequestMakeFriend = async (req, res) => {
     }
 };
 
-//Controller to deny a friend request
-import User from "../models/user.model.js";
 
 // Controller to deny/reject a received friend request
 export const denyRequestMakeFriend = async (req, res) => {
