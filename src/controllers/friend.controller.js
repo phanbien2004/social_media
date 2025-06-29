@@ -125,3 +125,37 @@ export const acceptRequestMakeFriend = async (req, res) => {
     }
 };
 
+//Controller to deny a friend request
+import User from "../models/user.model.js";
+
+// Controller to deny/reject a received friend request
+export const denyRequestMakeFriend = async (req, res) => {
+    const { id } = req.params; // ID of the user who sent the friend request
+
+    try {
+        const idCurrentUser = req.user._id;
+
+        // Find the currently authenticated user
+        const currentUser = await User.findById(idCurrentUser);
+        if (!currentUser) {
+            return res.status(404).json({ error: "User not found!" });
+        }
+
+        // Remove the friend request from both users
+        await User.findByIdAndUpdate(idCurrentUser, {
+            $pull: { pendingFriendRequest: id }
+        });
+
+        await User.findByIdAndUpdate(id, {
+            $pull: { friendRequest: idCurrentUser }
+        });
+
+        return res.status(200).json({ message: "Friend request denied successfully!" });
+
+    } catch (error) {
+        console.log("Error in denyRequestMakeFriend:", error.message);
+        res.status(500).json({ error: "Internal server error!" });
+    }
+};
+
+
